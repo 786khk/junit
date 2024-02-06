@@ -56,6 +56,31 @@
 
 
 ## JUnit 라이프사이클
+1. Test Class Initialization
+   - 테스트 클래스 초기화.
+   - @BeforeAll이 설정된 메서드를 실행한다.
+   - 테스트 클래스 내 모든 메서드 실행 전 호출
+2. Test Instance Creation
+   - 테스트 인스턴스 생성
+   - 테스트 클래스의 각 테스트 메서드마다 새로운 테스트 인스턴스가 생성된다.
+3. Test Method Initialization
+   - 테스트 인스턴스 초기화
+   - @BeforeEach 메서드 실행. 각테스트 메서드 실행 전호출되는 메서드 초기화 및 준비
+4. Test Method Execution 
+   - 테스트 메서드 실행
+   - 실테 테스트 코드 실행
+5. Test Method Cleanup
+  - 테스트 메서드 정리
+  - @AfterEach 메서드 실행. 각테스트 메서드 실행 후 호출되는 메서드. 리소스 해제 또는 정리
+6. Test Instance Destruction
+  - 테스트 인스턴스 소멸
+  - 테스트클래스의 모든 테스트 메서드가 실행이 완료된 루 해당 인스턴스 소멸
+  - @AfterAll 메서드 실행, 모든 테스트 메서드가 실행된 루 호출되는 메서드. 클래스 수준의 정리 작업 수행
+
+- 실제 테스트 코드는 컴파일러의 개입이 없다. 그래서 어노테이션으로 사전정의를 해야한다.
+- JUnit은 JVM에서 실행환경을 제공해  JVM에서 동작한다. 테스트 클래스를 로드해 테스트 메서드를 실행하고 결과를 취합해 보고하는작업을 수행한다. 테스트 도중 예외가 발생했을 때 해당 예외를 처리하고 테스트를 중지하거나 계쏙진행하는 등의 작업을 진행하지만 가비지컬렉션을 사용하지 않는다.
+- 실제 JAVA에서 코드가 실행되고 메서드 내 객체가 메모리에 할당되는것처럼 JUnit도 똑같이 작동한다. 해당 메서드의 실행이 완료되면 메서드 실행컨텍스트는 종료되고 메모리에서 해제된다.
+
 ```sql
 +--------------------------+
 | Test Class Initialization |
@@ -90,6 +115,30 @@
 +--------------------------+
 | Test Class Cleanup        |
 +--------------------------+
+```
 
+## JUnit의 구성
+### 어노테이션 
+- 테스트를 정의, 테스트 실행지원
+- @Test, @Before, @After, @BeforeClass, @AfterClass 등이 일반적
+### Assertions
+- 예상되는 결과와 실제 결과를 비교하기위한 API제공. 
+- assertEquals, assertTrue, assertFalse, assertNotNull 이 있다.
+### Test Runners
+- 테스트 실행 및 결과 보고
+### Parameterized Tests
+- 매개변수 테스트를 지원. 동일한 테스느 메서드를 여러개 다른 매개변수로 여러번 실행할 수 있다.
+- @MethodSource 어노테이션을 사용하며 매개변수화된 테스트 작성
+### Test Suites
+- 여러 테스트케이스를 하나의 그룹으로 묶어 실행할 수 있는 테스트 스위트 지원
+- @RunWith으로 테스트 수트를 지원
+### Rules
+- 테스트 메서드 실행 전 후 추가적인 동작을 정의할 수 있는 룰 제공
+- @TemporaryFolder, @Timeout등의 룰을 사용해 테스트 메서드환경을 설정 또는 시간제한을 둘 수 있다.
+### Extention
+- Extendtion을 통해 수명주기 확장, 새로운 기능 추가
+- ParameterResolver, TestInstancePostProcessor 등이 있다.
+```java
+@ExtendWith(TestInstancePostProcessor.class)
 
 ```
