@@ -11,7 +11,6 @@ public class ArrangeActAssertTest {
 
         assertEquals(4, calculator);
     }
-    
 }
 
 class Calculator {
