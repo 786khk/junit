@@ -22,9 +22,7 @@ import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 // @ExtendWith(TestInstancePostProcessor.class)
 public class MessageDTOTest {
     @BeforeEach
-    void setup() throws Exception {
-
-    }
+    void setup() throws Exception {}
 
     @Test
     @DisplayName("assert 메세지 테스트")
@@ -53,7 +51,9 @@ public class MessageDTOTest {
         messageList.add(messageDto2);
         messageList.add(messageDto3);
 
-        assertThat(messageList.get(0)).as("seq 라는 필드는 없다.").hasFieldOrProperty("seq"); //seq라는 필드를 가지고 있다.
+        assertThat(messageList.get(0))
+            .as("seq 라는 필드는 없다.")
+            .hasFieldOrProperty("seq"); //seq라는 필드를 가지고 있다.
         assertThat(messageList).isNotNull();
         
     }
