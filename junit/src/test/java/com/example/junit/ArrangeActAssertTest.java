@@ -2,7 +2,9 @@ package com.example.junit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
 public class ArrangeActAssertTest {
+    @Test
     void testAAA(){
         int a = 1;
         int b = 3;
@@ -15,6 +17,6 @@ public class ArrangeActAssertTest {
 
 class Calculator {
     public int add(int a, int b) {
-        return a+b;
+        return a + b;
     }
 }
