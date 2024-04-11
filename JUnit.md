@@ -136,9 +136,15 @@
 - 테스트 메서드 실행 전 후 추가적인 동작을 정의할 수 있는 룰 제공
 - @TemporaryFolder, @Timeout등의 룰을 사용해 테스트 메서드환경을 설정 또는 시간제한을 둘 수 있다.
 ### Extention
-- Extendtion을 통해 수명주기 확장, 새로운 기능 추가
+- Extendtion을 통해 수명주기 확장, 새로운 기능 추가 
+
 - ParameterResolver, TestInstancePostProcessor 등이 있다.
 ```java
-@ExtendWith(TestInstancePostProcessor.class)
+  @WebMvcTest(MyController.class)
+  @ExtendWith(TestInstancePostProcessor.class)
+  @TestInstance(Lifecycle.PER_METHOD)
+  public class UnitTest {
+      ...
+  }
 
 ```
