@@ -121,22 +121,58 @@
 ### 어노테이션 
 - 테스트를 정의, 테스트 실행지원
 - @Test, @Before, @After, @BeforeClass, @AfterClass 등이 일반적
-### Assertions
-- 예상되는 결과와 실제 결과를 비교하기위한 API제공. 
-- assertEquals, assertTrue, assertFalse, assertNotNull 이 있다.
+
+#### TestClass
+- 테스트 메서드 포함해 테스트 실시
+- @Test어노테이션이 부여된 테스트를 하나이상 포함
+- public 클래스여야만 하며 디폴트 생성자를 제공해야함
+
+#### TestMethods
+- test 내용이 들어있는 method
+- public 이어야만 한다
+- 파라미터를 받아서는 안됨
+- void 로 반환해야 함
+
+```java 
+public class UnitTests{
+
+  @Test
+  public void myTestMethod(){
+
+  }
+}
+
+
+```
+### Assertions 그리고 AssertJ
+- 예상되는 결과와 실제 결과를 비교하기위한 API제공.(테스트 검증)
+- Spring에서 기본제공하는 API 는 Assertions, AssertionJ는 의존을 추가해야함
+- assertEquals, assertTrue, assertFalse, assertNotNull 등이 있다.
+
 ### Test Runners
 - 테스트 실행 및 결과 보고
-### Parameterized Tests
-- 매개변수 테스트를 지원. 동일한 테스느 메서드를 여러개 다른 매개변수로 여러번 실행할 수 있다.
+- Junit38ClassRunner 하위 호환목적의 러너
+- JUnit4 JUnit4스타일의 테스트 케이스 실행
+- Parameterized 같은 테스트 케이스를 다른 입력값을 사용해 반복수행
+- Suite 복수의 테스트를 묶을 수 있는 집합(테스트 클래스 내 @Test 메서드를 찾아 실행)
+
+#### Parameterized Tests
+- 매개변수 테스트를 지원. 
+- 하나의 동일한 테스트 메서드를 여러개 다른 매개변수로 여러번 실행할 수 있다.
 - @MethodSource 어노테이션을 사용하며 매개변수화된 테스트 작성
+- Junit4에서는 @RunWith 어노테이션을 사용한다.
+- 메서드에서 파라미터를 받을 때 타입이  Collection이어야 한다.
+- 
 ### Test Suites
 - 여러 테스트케이스를 하나의 그룹으로 묶어 실행할 수 있는 테스트 스위트 지원
 - @RunWith으로 테스트 수트를 지원
+- JUnit에서는 별도로 지정하지 않아도 모든 테스트를 포함하는 케스트 스위트를 자동으로 생성
+- 같은 패키지 내 테스트 클래스들을 묶음
 ### Rules
 - 테스트 메서드 실행 전 후 추가적인 동작을 정의할 수 있는 룰 제공
 - @TemporaryFolder, @Timeout등의 룰을 사용해 테스트 메서드환경을 설정 또는 시간제한을 둘 수 있다.
 ### Extention
-- Extendtion을 통해 수명주기 확장, 새로운 기능 추가 
+- Extention을 통해 수명주기 확장, 새로운 기능 추가 
 
 - ParameterResolver, TestInstancePostProcessor 등이 있다.
 ```java
