@@ -25,5 +25,5 @@ private Stream<MyDto> provideDto() {
 - @valueSource와 @methodSource는 인자를 매개변수로 전달하는 동일한 목적을 지닌다.
 - @methodSource는 테스트 메서드의 인자를 제공하는 메서드를 지정해 Stream<Argument>로 반환한다. 
 - @valueSource는 특정 값의 배열인자로 직접 지정해 테스트를 한다.
-- 둘은 동시에 목적성이 충돌한다.
+- 둘은 동시에 `목적성이 충돌`한다.
 - `Junit에서는 이러한 어노테이션을 동시에 사용할 수 없도록 지정`되어있다.

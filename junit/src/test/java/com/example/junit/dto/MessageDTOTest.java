@@ -19,7 +19,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 
 @TestInstance(Lifecycle.PER_CLASS)
-// @ExtendWith(TestInstancePostProcessor.class)
 public class MessageDTOTest {
     @BeforeEach
     void setup() throws Exception {}

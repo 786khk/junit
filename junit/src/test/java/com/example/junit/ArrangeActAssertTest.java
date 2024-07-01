@@ -11,12 +11,19 @@ public class ArrangeActAssertTest {
         Calculator calculator = new Calculator();
         calculator.add(a, b);
 
-        assertEquals(4, calculator);
+        assertEquals(4, calculator.getResult());
     }
 }
 
 class Calculator {
+    private int result = 0;
+    
     public int add(int a, int b) {
-        return a + b;
+        result = a + b;
+        return result;
     }
+    public int getResult () {
+        return this.result;
+    }
+
 }
