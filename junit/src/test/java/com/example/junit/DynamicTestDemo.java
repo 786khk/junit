@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.TestFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
-public class DynamicTest {
+public class DynamicTestDemo {
     @TestFactory // 기존의 static test일 때 사용된 Junit test 라이프사이클 사용못함
     List<org.junit.jupiter.api.DynamicTest> readMessageList_MessageSearchDto_messageList() throws Exception {
         List<String> fistNameList = new ArrayList<String>();
