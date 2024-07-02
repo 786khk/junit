@@ -18,7 +18,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 
-@TestInstance(Lifecycle.PER_CLASS)
+@TestInstance(Lifecycle.PER_CLASS) // 인스턴스를 생성할 때 클래스 단위로 생성
 public class MessageDTOTest {
     @BeforeEach
     void setup() throws Exception {}
