@@ -67,3 +67,14 @@ void when_read_list() {}
 
 
 참고 : https://www.devkuma.com/docs/junit5/
+
+## @Mock
+- JUnit 테스트에서 실제 객체가 아닌 걱모양 지정
+
+## @Spy
+- JUnit 테스트의 Mock과 비슷하지만 실제 객체와 동일한 객체 뿐만 아니라 구현도 동일하게 동작
+- 실제 구현 된 내용 일부를 stub으로 조작 가능 그래서 실행할 테스트(inject mock)를 mock으로 지정해 stub으로도 쓸 수 있음(mocking 가능)
+
+## @InjectMock
+- Mock객체를 주입받은 객체
+- 주로 테스트할 객체(class) 지정
